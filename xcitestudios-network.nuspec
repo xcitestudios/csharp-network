@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Wade Womersley</authors>
+    <owners>Wade Womersley</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://xcitestudios.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Generic network</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright xcitestudios.com 2015</copyright>
+    <tags>xcitestudios network</tags>
+	<dependencies> 
+		<group>
+			<dependency id="com.xcitestudios.Generic" version="1.0.0-CI00000" />
+		</group>
+	</dependencies>
+  </metadata>
+</package>
