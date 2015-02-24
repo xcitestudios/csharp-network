@@ -37,9 +37,6 @@
     <Reference Include="com.xcitestudios.Generic">
       <HintPath>packages\com.xcitestudios.Generic.1.0.0-CI00005\lib\net45\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
-    <Reference Include="mustache-sharp">
-      <HintPath>packages\mustache-sharp.0.2.8.1\lib\net40\mustache-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
