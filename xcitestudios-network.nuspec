@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package >
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -13,10 +13,12 @@
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright xcitestudios.com 2015</copyright>
     <tags>xcitestudios network</tags>
-	<dependencies> 
-		<group>
-			<dependency id="com.xcitestudios.Generic" version="1.0.0-CI00000" />
-		</group>
+	<dependencies>
+		<dependency id="com.xcitestudios.Generic" version="1.0" />
 	</dependencies>
   </metadata>
+  <files>
+        <file src="bin\Release\net40\*" target="lib\net40" />
+        <file src="bin\Release\net45\*" target="lib\net45" />
+  </files>
 </package>
