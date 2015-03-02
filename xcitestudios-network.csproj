@@ -73,6 +73,12 @@
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IEmailBodyPart.cs" />
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IContact.cs" />
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IEmail.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfigurationSerializable.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfigurationSerializable.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

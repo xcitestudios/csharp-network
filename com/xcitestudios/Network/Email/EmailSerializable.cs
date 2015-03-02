@@ -6,10 +6,9 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Json;
 
     /// <summary>
-    /// Implementation of the <see cref="I:com.xcitestudios.Network.Email.Interfaces.IEmail"/> interface with seralization support.
+    /// Implementation of the <see cref="I:com.xcitestudios.Network.Email.Interfaces.IEmailSerializable"/> interface with serialization support.
     /// </summary>
     [DataContract]
     public class EmailSerializable : JsonSerializationHelper, IEmailSerializable<Contact, EmailBodyPart>

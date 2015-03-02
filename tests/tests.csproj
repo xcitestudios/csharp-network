@@ -63,6 +63,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="com\xcitestudios\Network\Email\EmailSerializableTest.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfigurationTest.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
