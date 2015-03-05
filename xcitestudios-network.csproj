@@ -46,14 +46,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
-  <ItemGroup Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Release 4.0'">
+  <ItemGroup Condition="'$(Configuration)'=='Release 4.0' or '$(Configuration)'=='Debug'">
     <Reference Include="com.xcitestudios.Generic">
-      <HintPath>packages\com.xcitestudios.Generic.1.0.1.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
+      <HintPath>packages\com.xcitestudios.Generic.1.0.5.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)'=='Release 4.5'">
     <Reference Include="com.xcitestudios.Generic">
-      <HintPath>packages\com.xcitestudios.Generic.1.0.1.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
+      <HintPath>packages\com.xcitestudios.Generic.1.0.5.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,10 +73,13 @@
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IEmailBodyPart.cs" />
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IContact.cs" />
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IEmail.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IAMQPServerConfigurationSerializable.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfigurationSerializable.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IAMQPServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfigurationSerializable.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\AMQPServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
