@@ -15,7 +15,7 @@
         /// Create a connection using the RabbitMQ library
         /// </summary>
         /// <param name="configuration"></param>
-        /// <returns>IConnection</returns>
+        /// <returns>RabbitMQ.Client.IConnection</returns>
         public static IConnection createConnectionUsingRabbitMQ(AMQPServerConfiguration configuration)
         {
             if (!Connections.ContainsKey("RabbitMQ" + configuration.SerializeJSON()))
