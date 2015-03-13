@@ -50,16 +50,25 @@
     <Reference Include="com.xcitestudios.Generic">
       <HintPath>packages\com.xcitestudios.Generic.1.0.5.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Twingly.Gearman">
+      <HintPath>packages\Twingly.Gearman.0.3.3.1\lib\net35\Twingly.Gearman.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)'=='Release 4.5'">
     <Reference Include="com.xcitestudios.Generic">
       <HintPath>packages\com.xcitestudios.Generic.1.0.5.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="RabbitMQ.Client">
       <HintPath>packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Twingly.Gearman">
+      <HintPath>packages\Twingly.Gearman.0.3.3.1\lib\net35\Twingly.Gearman.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,14 +86,18 @@
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IContact.cs" />
     <Compile Include="com\xcitestudios\Network\Email\Interfaces\IEmail.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IAMQPServerConfigurationSerializable.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IGearmanServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IGearmanServerConfigurationSerializable.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfigurationSerializable.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IAMQPServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfigurationSerializable.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IUsernameAuthenticatedServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\Interfaces\IServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\AMQPServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Configuration\GearmanServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfiguration.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfiguration.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Connection\GearmanConnection.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Connection\AMQPConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
