@@ -52,6 +52,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nustache.1.13.8.22\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.4.3.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -71,6 +75,7 @@
     <Compile Include="com\xcitestudios\Network\Server\Configuration\AMQPServerConfigurationTest.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfigurationTest.cs" />
     <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfigurationTest.cs" />
+    <Compile Include="com\xcitestudios\Network\Server\Connection\AMQPConnectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
