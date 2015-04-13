@@ -1,9 +1,8 @@
 ﻿namespace com.xcitestudios.Network.Server.Connection
 {
-    using com.xcitestudios.Network.Server.Configuration;
+    using com.xcitestudios.Network.Server.Configuration.Interfaces;
     using RabbitMQ.Client;
     using System.Collections.Generic;
-    using System.Security.Cryptography.X509Certificates;
 
     /// <summary>
     /// Helper to connect to AMQP servers.
@@ -21,7 +20,7 @@
         /// <param name="sslCertificatePath">Only used when configuration.SSL is true. Path to certificate to use for the connection if not in key store</param>
         /// <param name="sslCertificatePassphrase">Only used when configuration.SSL is true and sslCertificatePath file is specified. Passphrase to decrypt the sslCertificatePath file</param>
         /// <returns>RabbitMQ.Client.IConnection</returns>
-        public static IConnection createConnectionUsingRabbitMQ(AMQPServerConfiguration configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
+        public static IConnection createConnectionUsingRabbitMQ(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
             var factory = SetupFactory(configuration, sslServerName, sslCertificatePath, sslCertificatePassphrase);
 
@@ -36,7 +35,7 @@
         /// <param name="sslCertificatePath">Only used when configuration.SSL is true. Path to certificate to use for the connection if not in key store</param>
         /// <param name="sslCertificatePassphrase">Only used when configuration.SSL is true and sslCertificatePath file is specified. Passphrase to decrypt the sslCertificatePath file</param>
         /// <returns>RabbitMQ.Client.IConnection</returns>
-        public static IConnection createOrReuseConnectionUsingRabbitMQ(AMQPServerConfiguration configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
+        public static IConnection createOrReuseConnectionUsingRabbitMQ(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
             var keyHash = configuration.SerializeJSON();
 
@@ -48,7 +47,7 @@
             return Connections[keyHash];
         }
 
-        private static ConnectionFactory SetupFactory(AMQPServerConfiguration configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
+        private static ConnectionFactory SetupFactory(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
             var keyHash = configuration.SerializeJSON();
 
@@ -61,6 +60,10 @@
                 factory.Password = configuration.Password;
                 factory.VirtualHost = configuration.VHost;
                 factory.Protocol = Protocols.AMQP_0_9_1;
+                factory.RequestedConnectionTimeout = configuration.ConnectionTimeout * 1000;
+                factory.UseBackgroundThreadsForIO = true;
+                factory.TopologyRecoveryEnabled = true;
+                factory.AutomaticRecoveryEnabled = true;
 
                 if (configuration.SSL)
                 {

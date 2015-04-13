@@ -9,5 +9,10 @@
         /// VHost to use, default should be "/".
         /// </summary>
         string VHost { get; set; }
+
+        /// <summary>
+        /// Timeout used during connections.
+        /// </summary>
+        int ConnectionTimeout { get; set; }
     }
 }

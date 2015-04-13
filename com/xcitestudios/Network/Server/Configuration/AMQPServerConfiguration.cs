@@ -16,6 +16,12 @@
         public string VHost { get; set; }
 
         /// <summary>
+        /// Connection time out.
+        /// </summary>
+        [DataMember(Name="connectionTimeout")]
+        public int ConnectionTimeout { get; set; }
+
+        /// <summary>
         /// Updates the element implementing this interface using a JSON representation. 
         /// This means updating the state of this object with that defined in the JSON 
         /// as opposed to returning a new instance of this object.
@@ -34,6 +40,7 @@
             Password = newObj.Password;
 
             VHost = newObj.VHost;
+            ConnectionTimeout = newObj.ConnectionTimeout;
         }
 
         /// <summary>
