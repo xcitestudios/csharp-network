@@ -3,6 +3,8 @@
     using com.xcitestudios.Network.Server.Configuration.Interfaces;
     using RabbitMQ.Client;
     using System.Collections.Generic;
+    using System.Security.Cryptography;
+    using System.Text;
 
     /// <summary>
     /// Helper to connect to AMQP servers.
@@ -24,7 +26,10 @@
         {
             var factory = SetupFactory(configuration, sslServerName, sslCertificatePath, sslCertificatePassphrase);
 
-            return factory.CreateConnection();
+            lock (factory)
+            {
+                return factory.CreateConnection();
+            }
         }
 
         /// <summary>
@@ -37,54 +42,60 @@
         /// <returns>RabbitMQ.Client.IConnection</returns>
         public static IConnection createOrReuseConnectionUsingRabbitMQ(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
-            var keyHash = configuration.SerializeJSON();
+            var keyHash = Encoding.ASCII.GetString((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
 
-            if (!Connections.ContainsKey(keyHash) || !Connections[keyHash].IsOpen)
+            lock (Connections)
             {
-                Connections[keyHash] = createConnectionUsingRabbitMQ(configuration, sslServerName, sslCertificatePath, sslCertificatePassphrase);
-            }
+                if (!Connections.ContainsKey(keyHash) || !Connections[keyHash].IsOpen)
+                {
+                    Connections[keyHash] = createConnectionUsingRabbitMQ(configuration, sslServerName, sslCertificatePath, sslCertificatePassphrase);
+                }
 
-            return Connections[keyHash];
+                return Connections[keyHash];
+            }
         }
 
         private static ConnectionFactory SetupFactory(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
-            var keyHash = configuration.SerializeJSON();
-
-            if (!ConnectionFactories.ContainsKey(keyHash))
+            lock (ConnectionFactories)
             {
-                var factory = new ConnectionFactory();
-                factory.HostName = configuration.Host;
-                factory.Port = configuration.Port;
-                factory.UserName = configuration.Username;
-                factory.Password = configuration.Password;
-                factory.VirtualHost = configuration.VHost;
-                factory.Protocol = Protocols.AMQP_0_9_1;
-                factory.RequestedConnectionTimeout = configuration.ConnectionTimeout * 1000;
-                factory.UseBackgroundThreadsForIO = true;
-                factory.TopologyRecoveryEnabled = true;
-                factory.AutomaticRecoveryEnabled = true;
+                var keyHash = Encoding.ASCII.GetString((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
 
-                if (configuration.SSL)
+                if (!ConnectionFactories.ContainsKey(keyHash))
                 {
-                    factory.Ssl.Enabled = true;
-                    factory.Ssl.ServerName = sslServerName == null ? configuration.Host : sslServerName;
+                    var factory = new ConnectionFactory();
+                    factory.HostName = configuration.Host;
+                    factory.Port = configuration.Port;
+                    factory.UserName = configuration.Username;
+                    factory.Password = configuration.Password;
+                    factory.VirtualHost = configuration.VHost;
+                    factory.Protocol = Protocols.AMQP_0_9_1;
+                    factory.RequestedConnectionTimeout = configuration.ConnectionTimeout * 1000;
+                    factory.UseBackgroundThreadsForIO = true;
+                    factory.TopologyRecoveryEnabled = true;
+                    factory.AutomaticRecoveryEnabled = true;
 
-                    if (sslCertificatePath != null)
+                    if (configuration.SSL)
                     {
-                        factory.Ssl.CertPath = sslCertificatePath;
+                        factory.Ssl.Enabled = true;
+                        factory.Ssl.ServerName = sslServerName == null ? configuration.Host : sslServerName;
 
-                        if (sslCertificatePassphrase != null)
+                        if (sslCertificatePath != null)
                         {
-                            factory.Ssl.CertPassphrase = sslCertificatePassphrase;
+                            factory.Ssl.CertPath = sslCertificatePath;
+
+                            if (sslCertificatePassphrase != null)
+                            {
+                                factory.Ssl.CertPassphrase = sslCertificatePassphrase;
+                            }
                         }
                     }
+
+                    ConnectionFactories[keyHash] = factory;
                 }
 
-                ConnectionFactories[keyHash] = factory;
+                return ConnectionFactories[keyHash];
             }
-
-            return ConnectionFactories[keyHash];
         }
     }
 }
