@@ -42,7 +42,7 @@
         /// <returns>RabbitMQ.Client.IConnection</returns>
         public static IConnection createOrReuseConnectionUsingRabbitMQ(IAMQPServerConfigurationSerializable configuration, string sslServerName = null, string sslCertificatePath = null, string sslCertificatePassphrase = null)
         {
-            var keyHash = Encoding.ASCII.GetString((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
+            var keyHash = Convert.ToBase64String((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
 
             lock (Connections)
             {
@@ -59,7 +59,7 @@
         {
             lock (ConnectionFactories)
             {
-                var keyHash = Encoding.ASCII.GetString((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
+                var keyHash = Convert.ToBase64String((new SHA1CryptoServiceProvider()).ComputeHash(Encoding.UTF8.GetBytes(configuration.SerializeJSON())));
 
                 if (!ConnectionFactories.ContainsKey(keyHash))
                 {
