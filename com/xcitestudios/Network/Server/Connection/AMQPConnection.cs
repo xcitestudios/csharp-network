@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Security.Cryptography;
     using System.Text;
+    using System;
 
     /// <summary>
     /// Helper to connect to AMQP servers.
