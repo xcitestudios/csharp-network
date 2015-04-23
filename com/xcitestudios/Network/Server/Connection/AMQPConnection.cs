@@ -75,6 +75,7 @@
                     factory.UseBackgroundThreadsForIO = true;
                     factory.TopologyRecoveryEnabled = true;
                     factory.AutomaticRecoveryEnabled = true;
+                    factory.RequestedHeartbeat = 10;
 
                     if (configuration.SSL)
                     {
