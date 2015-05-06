@@ -1,12 +1,14 @@
 ﻿namespace com.xcitestudios.Network.Server.Configuration
 {
     using com.xcitestudios.Network.Server.Configuration.Interfaces;
+    using System;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// Implementation of the <see cref="I:com.xcitestudios.Network.Server.Configuration.Interfaces.IUsernameAuthenticatedServerConfigurationSerializable"/> interface with serialization support.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class UsernameAuthenticatedServerConfiguration : ServerConfiguration, IUsernameAuthenticatedServerConfigurationSerializable
     {
         /// <summary>

@@ -11,6 +11,7 @@
     /// Implementation of the <see cref="I:com.xcitestudios.Network.Email.Interfaces.IEmailSerializable"/> interface with serialization support.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class EmailSerializable : JsonSerializationHelper, IEmailSerializable<Contact, EmailBodyPart>
     {
         /// <summary>

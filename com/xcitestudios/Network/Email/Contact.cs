@@ -9,6 +9,7 @@
     /// A simple person or object.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Contact : JsonSerializationHelper, IContactSerializable, IComparable<IContact>
     {
         /// <summary>

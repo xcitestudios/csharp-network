@@ -12,6 +12,7 @@
     /// Implementation of the <see cref="I:com.xcitestudios.Network.Server.Configuration.Interfaces.IServerConfigurationSerializable"/> interface with serialization support.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class GearmanServerConfiguration : ServerConfiguration, IGearmanServerConfigurationSerializable
     {
     }

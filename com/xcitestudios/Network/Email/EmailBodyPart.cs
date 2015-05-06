@@ -2,12 +2,14 @@
 {
     using com.xcitestudios.Generic.Data.Manipulation;
     using com.xcitestudios.Network.Email.Interfaces;
+    using System;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// Body part of an email
     /// </summary>
     [DataContract]
+    [Serializable]
     public class EmailBodyPart : JsonSerializationHelper, IEmailBodyPartSerializable<EmailBodyPart>
     {
         /// <summary>
