@@ -6,7 +6,7 @@
     <ProjectGuid>{C720E0ED-3BA4-423C-B8E3-49366E8EBCDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>tests</RootNamespace>
+    <RootNamespace>tests.com.xcitestudios.Network</RootNamespace>
     <AssemblyName>tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -37,24 +37,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="com.xcitestudios.Generic, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\com.xcitestudios.Generic.1.0.5.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
+    <Reference Include="com.xcitestudios.Generic">
+      <HintPath>..\packages\com.xcitestudios.Generic.1.0.6.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Schema">
       <HintPath>..\packages\Newtonsoft.Json.Schema.1.0.8\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
     </Reference>
-    <Reference Include="Nustache.Core, Version=1.13.8.22, Culture=neutral, PublicKeyToken=efd6f3d8f76ecd9f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nustache.1.13.8.22\lib\net20\Nustache.Core.dll</HintPath>
+    <Reference Include="Nustache.Core">
+      <HintPath>..\packages\Nustache.1.15.1.3\lib\net20\Nustache.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.4.3.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\packages\RabbitMQ.Client.3.5.3\lib\net40\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -71,12 +71,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="com\xcitestudios\Network\Email\EmailSerializableTest.cs" />
-    <Compile Include="com\xcitestudios\Network\Server\Configuration\AMQPServerConfigurationTest.cs" />
-    <Compile Include="com\xcitestudios\Network\Server\Configuration\UsernameAuthenticatedServerConfigurationTest.cs" />
-    <Compile Include="com\xcitestudios\Network\Server\Configuration\ServerConfigurationTest.cs" />
-    <Compile Include="com\xcitestudios\Network\Server\Connection\AMQPConnectionTest.cs" />
+    <Compile Include="Email\EmailSerializableTest.cs" />
+    <Compile Include="Server\Configuration\AMQPServerConfigurationTest.cs" />
+    <Compile Include="Server\Configuration\UsernameAuthenticatedServerConfigurationTest.cs" />
+    <Compile Include="Server\Configuration\ServerConfigurationTest.cs" />
+    <Compile Include="Server\Connection\AMQPConnectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transfer\PacketTest.cs" />
+    <Compile Include="Transfer\Packets\MessagePartGroupTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xcitestudios-network.csproj">
@@ -88,6 +90,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
