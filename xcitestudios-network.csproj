@@ -100,10 +100,12 @@
     <Compile Include="Server\Connection\AMQPConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transfer\Packet.cs" />
+    <Compile Include="Transfer\PacketManager.cs" />
     <Compile Include="Transfer\Packets\Interfaces\IAsByteArray.cs" />
     <Compile Include="Transfer\Packets\Interfaces\IMessagePartGroup.cs" />
     <Compile Include="Transfer\Packets\Interfaces\IMessagePartGroupCompiler.cs" />
     <Compile Include="Transfer\Packets\Interfaces\IMessagePart.cs" />
+    <Compile Include="Transfer\Packets\Interfaces\IOrderedMessageAsByteArray.cs" />
     <Compile Include="Transfer\Packets\Interfaces\IOrderedMessage.cs" />
     <Compile Include="Transfer\Packets\MessagePart.cs" />
     <Compile Include="Transfer\Packets\MessagePartGroup.cs" />
