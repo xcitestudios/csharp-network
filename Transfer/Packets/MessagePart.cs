@@ -20,14 +20,26 @@
         public uint Index { get; set; }
 
         /// <summary>
-        /// Size of the message ignoring padding.
+        /// Length of the message packet in total.
         /// </summary>
         public uint MessageLength { get; set; }
 
+        private byte[] _Message;
         /// <summary>
-        /// Raw message data.
+        /// The message.
         /// </summary>
-        public byte[] Message { get; set; }
+        public byte[] Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                _Message = value;
+                MessageLength = (uint)value.Length;
+            }
+        }
 
         /// <summary>
         /// SHA512(Group + GroupCount + GroupIndex + MessageLength + Message)
@@ -76,7 +88,7 @@
         /// <returns></returns>
         public byte[] ComputeHash()
         {
-            var fullPacket = GetBytes();
+            var fullPacket = GetBytes(false);
             var noHash = new byte[fullPacket.Length - 64];
 
             Buffer.BlockCopy(fullPacket, 64, noHash, 0, noHash.Length);
@@ -89,6 +101,16 @@
         /// </summary>
         public byte[] GetBytes()
         {
+            return GetBytes(true);
+        }
+
+        private byte[] GetBytes(bool calculateSignature = false)
+        {
+            if(calculateSignature)
+            {
+                Signature = ComputeHash();
+            }
+
             var compiledBytes = new byte[80 + MessageLength];
 
             Buffer.BlockCopy(Signature, 0, compiledBytes, 0, 64);
@@ -131,7 +153,9 @@
                 Buffer.BlockCopy(bytes, 80, Message, 0, (int)MessageLength);
             }
 
-            if (!ComputeHash().SequenceEqual(Signature))
+            var thisHash = ComputeHash();
+
+            if (!thisHash.SequenceEqual(Signature))
             {
                 throw new InvalidCastException("Could not convert bytes to a message, signatures do not match.");
             }
