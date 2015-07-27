@@ -11,4 +11,12 @@
         where U: IEmailBodyPartSerializable<U>
     {
     }
+
+    /// <summary>
+    /// An email object with unlimited bodies which is serializable as JSON.
+    /// </summary>
+    public interface IEmailSerializable : IEmailSerializable<IContactSerializable, IEmailBodyPartSerializable>
+    {
+
+    }
 }

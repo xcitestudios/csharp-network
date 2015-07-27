@@ -28,4 +28,11 @@
         /// </summary>
         string RawContent { get; set; }
     }
+
+    /// <summary>
+    /// A body part of an email.
+    /// </summary>
+    public interface IEmailBodyPart: IEmailBodyPart<IEmailBodyPart>
+    {
+    }
 }
