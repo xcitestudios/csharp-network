@@ -13,7 +13,7 @@
     [DataContract]
     [Serializable]
     [KnownType(typeof(Contact)), KnownType(typeof(EmailBodyPart))]
-    public class EmailSerializable : JsonSerializationHelper, IEmailSerializable<IContactSerializable, IEmailBodyPartSerializable>
+    public class EmailSerializable : JsonSerializationHelper, IEmailSerializable
     {
         /// <summary>
         /// Any non standard headers here - these should never overwrite the explicit headers.
