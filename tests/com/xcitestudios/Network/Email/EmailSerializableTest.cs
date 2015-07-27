@@ -149,7 +149,7 @@
 
             using (var client = new WebClient())
             {
-                textSchema = client.DownloadString("https://cdn.rawgit.com/xcitestudios/json-schemas/cdn-tag-2/com/xcitestudios/schemas/Network/Email.json");
+                textSchema = client.DownloadString("https://cdn.rawgit.com/xcitestudios/json-schemas/cdn-tag-4/com/xcitestudios/schemas/Network/Email.json");
             }
 
             var schema = JSchema.Parse(textSchema);

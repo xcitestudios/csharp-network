@@ -10,7 +10,7 @@
     /// </summary>
     [DataContract]
     [Serializable]
-    public class EmailBodyPart : JsonSerializationHelper, IEmailBodyPartSerializable<EmailBodyPart>
+    public class EmailBodyPart : JsonSerializationHelper, IEmailBodyPartSerializable
     {
         /// <summary>
         /// Encoding of this body part. For a singular email this should go into the headers 
@@ -30,7 +30,7 @@
         /// multipart/* body parts. Use this OR <see cref="RawContent"/>.
         /// </summary>
         [DataMember(Name = "bodyParts")]
-        public EmailBodyPart[] BodyParts { get; set; }
+        public IEmailBodyPartSerializable[] BodyParts { get; set; }
 
         /// <summary>
         /// Raw content of this body part. Use this OR <see cref="BodyParts"/>.

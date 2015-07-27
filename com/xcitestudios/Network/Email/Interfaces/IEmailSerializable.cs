@@ -1,6 +1,7 @@
 ﻿namespace com.xcitestudios.Network.Email.Interfaces
 {
     using com.xcitestudios.Generic.Data.Manipulation.Interfaces;
+    using System;
 
     /// <summary>
     /// An email object with unlimited bodies which is serializable as JSON.

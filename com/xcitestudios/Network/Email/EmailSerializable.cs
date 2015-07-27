@@ -12,7 +12,8 @@
     /// </summary>
     [DataContract]
     [Serializable]
-    public class EmailSerializable : JsonSerializationHelper, IEmailSerializable<Contact, EmailBodyPart>
+    [KnownType(typeof(Contact)), KnownType(typeof(EmailBodyPart))]
+    public class EmailSerializable : JsonSerializationHelper, IEmailSerializable<IContactSerializable, IEmailBodyPartSerializable>
     {
         /// <summary>
         /// Any non standard headers here - these should never overwrite the explicit headers.
@@ -24,37 +25,37 @@
         /// Who is the email from? Can be multiple people.
         /// </summary>
         [DataMember(Name = "from")]
-        public Contact[] From { get; set; }
+        public IContactSerializable[] From { get; set; }
 
         /// <summary>
         /// Optional OR Required. Optional where From is one person. Required where From is multiple people.
         /// </summary>
         [DataMember(Name = "sender")]
-        public Contact Sender { get; set; }
+        public IContactSerializable Sender { get; set; }
 
         /// <summary>
         /// Optional. When hitting reply, who should the emails go to?
         /// </summary>
         [DataMember(Name = "replyTo")]
-        public Contact[] ReplyTo { get; set; }
+        public IContactSerializable[] ReplyTo { get; set; }
 
         /// <summary>
         /// Recipients of the email.
         /// </summary>
         [DataMember(Name = "to")]
-        public Contact[] To { get; set; }
+        public IContactSerializable[] To { get; set; }
 
         /// <summary>
         /// Optional. CC Recipients of the email.
         /// </summary>
         [DataMember(Name = "cc")]
-        public Contact[] CC { get; set; }
+        public IContactSerializable[] CC { get; set; }
 
         /// <summary>
         /// Optional. BCC Recipients of the email.
         /// </summary>
         [DataMember(Name = "bcc")]
-        public Contact[] BCC { get; set; }
+        public IContactSerializable[] BCC { get; set; }
 
         /// <summary>
         /// Optional. The time the email was "sent" (finished by a person/system). This is not
@@ -98,7 +99,7 @@
         /// one body part of type multipart/alternative which has multiple body parts.
         /// </summary>
         [DataMember(Name = "bodyParts")]
-        public EmailBodyPart[] BodyParts { get; set; }
+        public IEmailBodyPartSerializable[] BodyParts { get; set; }
 
         /// <summary>
         /// Updates the element implementing this interface using a JSON representation. 
