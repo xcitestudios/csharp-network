@@ -12,6 +12,11 @@
         string ContentTransferEncoding { get; set; }
 
         /// <summary>
+        /// ContentID (used for linking to attachments or embedding images).
+        /// </summary>
+        string ContentID { get; set; }
+
+        /// <summary>
         /// RawContent type of the body. Can be a single type such as text/plain, text/html; or 
         /// a multipart type such as multipart/alternative or multipart/mixed.
         /// </summary>

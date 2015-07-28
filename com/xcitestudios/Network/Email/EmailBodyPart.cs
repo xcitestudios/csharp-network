@@ -39,6 +39,12 @@
         public string RawContent { get; set; }
 
         /// <summary>
+        /// ContentID (used for linking to attachments or embedding images).
+        /// </summary>
+        [DataMember(Name = "contentID")]
+        public string ContentID { get; set; }
+
+        /// <summary>
         /// Updates the element implementing this interface using a JSON representation. 
         /// This means updating the state of this object with that defined in the JSON 
         /// as opposed to returning a new instance of this object.
