@@ -54,12 +54,12 @@
   </PropertyGroup>
   <ItemGroup Condition="'$(Configuration)'=='Release 4.0' or '$(Configuration)'=='Debug'">
     <Reference Include="com.xcitestudios.Generic">
-      <HintPath>packages\com.xcitestudios.Generic.1.0.7.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
+      <HintPath>packages\com.xcitestudios.Generic.1.0.8.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)'=='Release 4.5'">
     <Reference Include="com.xcitestudios.Generic">
-      <HintPath>packages\com.xcitestudios.Generic.1.0.7.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
+      <HintPath>packages\com.xcitestudios.Generic.1.0.8.0\lib\net45\com.xcitestudios.Generic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +103,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="com.xcitestudios.snk" />
     <None Include="LICENSE" />
     <None Include="nuget.config" />

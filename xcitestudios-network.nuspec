@@ -14,7 +14,7 @@
     <copyright>Copyright xcitestudios.com 2015</copyright>
     <tags>xcitestudios network</tags>
   <dependencies>
-    <dependency id="com.xcitestudios.Generic" version="1.0" />
+    <dependency id="com.xcitestudios.Generic" version="1.0.8" />
     <dependency id="RabbitMQ.Client" version="3.5.4" />
     <dependency id="Twingly.Gearman" version="0.3" />
   </dependencies>
