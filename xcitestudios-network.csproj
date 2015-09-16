@@ -46,6 +46,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>com.xcitestudios.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup Condition="'$(Configuration)'=='Release 4.0' or '$(Configuration)'=='Debug'">
     <Reference Include="com.xcitestudios.Generic">
       <HintPath>packages\com.xcitestudios.Generic.1.0.7.0\lib\net40\com.xcitestudios.Generic.dll</HintPath>
@@ -98,10 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="com.xcitestudios.snk" />
     <None Include="LICENSE" />
     <None Include="nuget.config" />
     <None Include="packages.config" />
     <None Include="README.md" />
+    <None Include="xcitestudios-network.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

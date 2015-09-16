@@ -13,11 +13,11 @@
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright xcitestudios.com 2015</copyright>
     <tags>xcitestudios network</tags>
-	<dependencies>
-		<dependency id="com.xcitestudios.Generic" version="1.0" />
-		<dependency id="RabbitMQ.Client" version="3.5" />
-		<dependency id="Twingly.Gearman" version="0.3" />
-	</dependencies>
+  <dependencies>
+    <dependency id="com.xcitestudios.Generic" version="1.0" />
+    <dependency id="RabbitMQ.Client" version="3.5.4" />
+    <dependency id="Twingly.Gearman" version="0.3" />
+  </dependencies>
   </metadata>
   <files>
         <file src="bin\Release\net40\com.xcitestudios.Network.dll" target="lib\net40\com.xcitestudios.Network.dll" />
